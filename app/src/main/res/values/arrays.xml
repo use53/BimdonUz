@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="array_tab_item">
+        <item>@string/books_item</item>
+        <item>@string/news_item</item>
+    </array>
+</resources>

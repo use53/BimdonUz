@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "191048396570",
+    "project_id": "bilimdonuz",
+    "storage_bucket": "bilimdonuz.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:191048396570:android:9901a37dbc4b10bcbf46a3",
+        "android_client_info": {
+          "package_name": "ru.examples.bilimdonuz"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "191048396570-au4buo6idq775f9758lugphpvgvd5nlp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAgnkl3T-rL5dWop7hGXtmZidhrLBpTGt4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "191048396570-au4buo6idq775f9758lugphpvgvd5nlp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

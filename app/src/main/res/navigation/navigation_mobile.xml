@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_mobile"
+    app:startDestination="@id/books_navigation">
+
+    <fragment
+        android:id="@+id/books_navigation"
+        tools:layout="@layout/books_fragment"
+        android:name="ru.examples.bilimdonuz.ui.BooksFragment"/>
+    <fragment
+        android:id="@+id/news_navigation"
+        android:name="ru.examples.bilimdonuz.ui.news.NewsFragment"
+        tools:layout="@layout/news_fragment"/>
+    <fragment
+        android:id="@+id/question_navigation"
+        android:name="ru.examples.bilimdonuz.ui.question.QuestionsFragment"
+        tools:layout="@layout/questions_fragment"/>
+
+    <fragment
+        android:id="@+id/vpquestion_navigation"
+        android:name="ru.examples.bilimdonuz.ui.vpquestion.VpQuestionFragment"
+        tools:layout="@layout/vpquestion_fragment"/>
+    <fragment
+        android:id="@+id/save_navigation"
+        android:name="ru.examples.bilimdonuz.ui.savecount.SaveFragment"
+        tools:layout="@layout/save_fragment"/>
+    <fragment
+        android:id="@+id/settings_fragment"
+        android:name="ru.examples.bilimdonuz.SettingsFragment"
+        tools:layout="@layout/setting_fragment"/>
+</navigation>

@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Bilimdon</string>
+    <string name="books_item">Savol</string>
+    <string name="news_item">Natija</string>
+    <string name="title_settings">Yordam</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="dialog_ok">saqlash</string>
+    <string name="tv_title">Bu dastur bizning bilimimizni baxolab boradi dastur online ishlaydi va doimo test uzgartirib boriladi yangi
+    darajadagi testlar bilan taminlab boriladi va eng yuqori natijalarni ham saqlab quyish imkoniyati mavjud va bu yerda eng yaxshi kursatkichlar saqlanadi va biz bumi online tarzda uzgartirib turishimiz munkin
+    shunchaki ismimizni kiritib quyamz xolos va albatta biz uni saqlab quymasak ham buladi faqat natijalar barcha dasturdan foydalanuvchilarga kurinib turadi
+    </string>
+    <string name="title_telegram">telegram</string>
+</resources>
