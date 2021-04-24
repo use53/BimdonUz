@@ -6,7 +6,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.github.mikephil.charting.data.PieData
 import ru.examples.bilimdonuz.model.AnswerModel
-import ru.examples.bilimdonuz.model.SaveModel
 import ru.examples.bilimdonuz.ui.savecount.SaveRepo
 
 class VpQuestionViewModel (app:Application):
@@ -16,7 +15,7 @@ private val vpQuestionRepo=VpQuestionRepo.instanse(app.applicationContext)
     private var _statusVm=MutableLiveData<NetworksStatus>()
     private var _isCorrentVm=MutableLiveData<Boolean>()
     private var _saveCount=MutableLiveData<Int>()
-    private val saveRepo=SaveRepo()
+    private val saveRepo by lazy { SaveRepo.instanse(app.applicationContext) }
     private var _ldChartVm=MutableLiveData<PieData>()
 
     fun onQuestionVM(string:String){
@@ -52,7 +51,7 @@ private val vpQuestionRepo=VpQuestionRepo.instanse(app.applicationContext)
         vpQuestionRepo.onBackItem()
     }
 
-    fun onFirebaseSave(saveModel: SaveModel){
-        saveRepo.onSaveItem(saveModel)
+    fun onFirebaseSave(count: Int) {
+        saveRepo.onSaveItem(count)
     }
 }

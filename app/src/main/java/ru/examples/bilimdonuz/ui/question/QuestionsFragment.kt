@@ -9,53 +9,57 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.GridLayoutManager
 import ru.examples.bilimdonuz.R
 import ru.examples.bilimdonuz.adapters.BooksAdapters
+import ru.examples.bilimdonuz.common.invisible
+import ru.examples.bilimdonuz.common.show
 import ru.examples.bilimdonuz.databinding.QuestionsFragmentBinding
 import ru.examples.bilimdonuz.model.BooksModel
 import ru.examples.bilimdonuz.onclick.IBooksOnClcik
 import ru.examples.bilimdonuz.ui.vpquestion.NetworksStatus
 import ru.examples.bilimdonuz.ui.vpquestion.VpQuestionViewModel
 
-const val KEY_ID="KEY_ID"
-class QuestionsFragment :Fragment(R.layout.questions_fragment), IBooksOnClcik {
+const val KEY_ID = "KEY_ID"
+
+class QuestionsFragment : Fragment(R.layout.questions_fragment),
+        IBooksOnClcik {
 
 
-    private var questionsFragmentBinding:QuestionsFragmentBinding?=null
+    private var questionsFragmentBinding: QuestionsFragmentBinding? = null
     private val booksAdapter by lazy { BooksAdapters(this) }
-    private val questionsViewModel:QuestionsViewModel by activityViewModels()
-    private val navController by lazy { Navigation.findNavController(requireActivity(),R.id.fragment) }
-    private val vpQuestionViewModel:VpQuestionViewModel by activityViewModels()
+    private val questionsViewModel: QuestionsViewModel by activityViewModels()
+    private val navController by lazy { Navigation.findNavController(requireActivity(), R.id.fragment) }
+    private val vpQuestionViewModel: VpQuestionViewModel by activityViewModels()
 
-    private val obsevable=Observer<NetworksStatus>{
-        when(it){
-            is NetworksStatus.Success->successItem()
-            is NetworksStatus.Loading->showLoading()
+    private val obsevable = Observer<NetworksStatus> {
+        when (it) {
+            is NetworksStatus.Success -> successItem()
+            is NetworksStatus.Loading -> showLoading()
         }
     }
 
     private fun showLoading() {
-        questionsFragmentBinding!!.lottieFile.visibility=View.VISIBLE
-        questionsFragmentBinding!!.recBooks.visibility=View.INVISIBLE
+        questionsFragmentBinding!!.lottieFile.show()
+        questionsFragmentBinding!!.recBooks.invisible()
     }
 
     private fun successItem() {
-        questionsFragmentBinding!!.lottieFile.visibility=View.INVISIBLE
+        questionsFragmentBinding!!.lottieFile.invisible()
         navController.navigate(R.id.vpquestion_navigation)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val binding=QuestionsFragmentBinding.bind(view)
-        questionsFragmentBinding=binding
+        val binding = QuestionsFragmentBinding.bind(view)
+        questionsFragmentBinding = binding
         questionAdapter()
     }
 
     private fun questionAdapter() {
-        questionsFragmentBinding!!.recBooks.layoutManager=GridLayoutManager(requireContext(),2)
-        questionsFragmentBinding!!.recBooks.adapter=booksAdapter
+        questionsFragmentBinding!!.recBooks.layoutManager = GridLayoutManager(requireContext(), 2)
+        questionsFragmentBinding!!.recBooks.adapter = booksAdapter
         questionsViewModel.BooksdbVM()
         questionsViewModel.ldBooksVM.observe(viewLifecycleOwner, Observer {
-            questionsFragmentBinding!!.lottieFile.visibility=View.INVISIBLE
+            questionsFragmentBinding!!.lottieFile.invisible()
             booksAdapter.submitList(it)
 
         })
@@ -63,11 +67,11 @@ class QuestionsFragment :Fragment(R.layout.questions_fragment), IBooksOnClcik {
 
     override fun onDestroyView() {
         super.onDestroyView()
-        questionsFragmentBinding=null
+        questionsFragmentBinding = null
     }
 
     override fun onClickListener(booksModel: BooksModel) {
-         vpQuestionViewModel.onQuestionVM(booksModel.name)
+        vpQuestionViewModel.onQuestionVM(booksModel.name)
         vpQuestionViewModel.statusVm.observe(viewLifecycleOwner, obsevable)
 
     }

@@ -8,14 +8,15 @@ import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
 import com.google.firebase.database.FirebaseDatabase
 import ru.examples.bilimdonuz.model.SaveModel
+import ru.examples.bilimdonuz.utils.PreferenseManager
 
-class SaveRepo (){
+class SaveRepo (ctx:Context){
     companion object{
 
         private var instanse: SaveRepo?=null
         fun instanse(ctx: Context): SaveRepo {
             if(instanse==null){
-                instanse= SaveRepo()
+                instanse= SaveRepo(ctx)
             }else{
                 instanse
             }
@@ -23,7 +24,7 @@ class SaveRepo (){
         }
 
     }
-
+   private val preferense by lazy { PreferenseManager.instanse(ctx) }
     private val list= mutableListOf<Int>().apply {
         this.add(Color.RED)
         this.add(Color.GREEN)
@@ -50,10 +51,19 @@ class SaveRepo (){
         return list
     }
 
-    fun onSaveItem(saveModel: SaveModel){
+    fun onSaveItem(count: Int) {
+        if (preferense.isCorrent){
+      val savemodel=SaveModel(
+          preferense.isSaveName,
+           preferense.isSciense,
+      preferense.isSaveSurName,
+      count.toString())
         firabseDb.child("people")
-            .child(saveModel.surname)
-            .setValue(saveModel)
+            .child("${preferense.isSaveName}" +
+                    "${preferense.isSaveSurName}" +
+                    "${preferense.isAge}" +
+                    "${preferense.isSciense}")
+            .setValue(savemodel)}
 
 
     }

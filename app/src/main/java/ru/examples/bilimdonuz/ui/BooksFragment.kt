@@ -16,7 +16,8 @@ import ru.examples.bilimdonuz.vp.NearbyListAdapter
 import ru.examples.bilimdonuz.ui.news.NewsFragment
 import ru.examples.bilimdonuz.ui.question.QuestionsFragment
 
-class BooksFragment :Fragment(R.layout.books_fragment), TabLayoutMediator.TabConfigurationStrategy, Toolbar.OnMenuItemClickListener {
+class BooksFragment :Fragment(R.layout.books_fragment),
+    TabLayoutMediator.TabConfigurationStrategy, Toolbar.OnMenuItemClickListener {
 
     private var booksFragmentBinding:BooksFragmentBinding?=null
     private val fragmentList by lazy {
@@ -59,16 +60,23 @@ class BooksFragment :Fragment(R.layout.books_fragment), TabLayoutMediator.TabCon
     }
 
     override fun onMenuItemClick(item: MenuItem?): Boolean {
-        if (item!!.itemId==R.id.menu_settings){
-               navController.navigate(R.id.settings_fragment)
-            return true
-        }else if (item.itemId==R.id.menu_telegram){
-            val telegram =
-                    Intent(Intent.ACTION_VIEW, Uri.parse("https://t.me/Developer_JE"))
-            startActivity(telegram)
-            return true
+
+        when(item!!.itemId){
+            R.id.menu_settings->{
+                navController.navigate(R.id.settings_fragment)
+                return true
+            }
+            R.id.menu_telegram->{
+                Intent(Intent.ACTION_VIEW, Uri.parse("https://t.me/Developer_JE")).apply {
+                    startActivity(this) }
+                return true
+            }
+            R.id.menu_account->{
+                navController.navigate(R.id.account_navigation)
+                return true
+            }
+            else->{return false}
         }
-        else
-            return false
+
     }
 }

@@ -1,15 +1,13 @@
 package ru.examples.bilimdonuz.ui.news
 
 import android.content.Context
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 import ru.examples.bilimdonuz.model.SaveModel
 import ru.examples.bilimdonuz.ui.question.QuestionsRepo
 
@@ -38,7 +36,7 @@ class NewsRepo (){
             firebaseDb.child("people")
                 .addListenerForSingleValueEvent(object :ValueEventListener{
                     override fun onCancelled(error: DatabaseError) {
-                        TODO("Not yet implemented")
+                        Log.d("TAG", "onCancelled: ${error.code}")
                     }
 
                     override fun onDataChange(snapshot: DataSnapshot) {
@@ -54,6 +52,10 @@ class NewsRepo (){
 
     fun ldRead(): MutableLiveData<MutableList<SaveModel>> {
         return ldRead
+    }
+
+    fun onCansel(){
+        scope.cancel()
     }
 
 

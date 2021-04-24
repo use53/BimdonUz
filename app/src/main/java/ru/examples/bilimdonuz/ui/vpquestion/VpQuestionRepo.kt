@@ -9,8 +9,8 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import kotlinx.coroutines.*
 import ru.examples.bilimdonuz.model.AnswerModel
-import ru.examples.bilimdonuz.ui.test.NetworkStatus
-import ru.examples.bilimdonuz.ui.test.TestVpActivityRepo
+
+import ru.examples.bilimdonuz.utils.PreferenseManager
 
 class VpQuestionRepo(ctx:Context) {
 
@@ -28,10 +28,13 @@ class VpQuestionRepo(ctx:Context) {
     }
     private val firebaseDb by lazy { FirebaseDatabase.getInstance().reference }
     private var ldQuestion=MutableLiveData<MutableList<AnswerModel>>()
+    private val preferense by lazy { PreferenseManager.instanse(ctx) }
     private val job= Job()
     private val scope= CoroutineScope(job+ Dispatchers.IO)
     private val status=MutableLiveData<NetworksStatus>()
+
     fun onQuestion(string:String){
+        preferense.isSciense=string
         status.postValue(NetworksStatus.Loading)
          scope.launch {
         val list= arrayListOf<AnswerModel>()

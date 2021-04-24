@@ -2,10 +2,11 @@
 <shape
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="rectangle">
-    <corners
-        android:radius="20dp"
-        />
-    <stroke
-        android:width="2dp"
+
+    <solid
         android:color="@color/recyclerscroll"/>
+
+    <corners
+        android:radius="90dp"/>
+
 </shape>

@@ -17,4 +17,9 @@ class NewsViewModel (app:Application):AndroidViewModel(app){
 
     val ldRead:LiveData<MutableList<SaveModel>>
     get() = _ldRead
+
+    override fun onCleared() {
+        super.onCleared()
+        newsRepo.onCansel()
+    }
 }

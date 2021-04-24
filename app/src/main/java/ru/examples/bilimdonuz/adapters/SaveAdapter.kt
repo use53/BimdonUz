@@ -10,10 +10,8 @@ import ru.examples.bilimdonuz.databinding.SaveLayoutBinding
 import ru.examples.bilimdonuz.model.SaveModel
 
 
-class SaveAdapter ():ListAdapter<SaveModel,SaveAdapter.SaveVH>(SaveCallback()){
-
-
-
+class SaveAdapter ():
+    ListAdapter<SaveModel,SaveAdapter.SaveVH>(SaveCallback()){
 
      override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SaveVH {
           val view=SaveLayoutBinding.inflate(LayoutInflater.from(parent.context),parent,false)
@@ -27,7 +25,10 @@ class SaveAdapter ():ListAdapter<SaveModel,SaveAdapter.SaveVH>(SaveCallback()){
         RecyclerView.ViewHolder(view.root){
         fun onBind(saveModel: SaveModel){
             view.tvCount.text=saveModel.count
-            view.tvName.text=saveModel.surname
+            view.tvName.text=saveModel.name
+            view.tvSurname.text=saveModel.surname
+            view.tvScise.text=saveModel.sciense
+
         }
     }
 }

@@ -30,4 +30,8 @@
         android:id="@+id/settings_fragment"
         android:name="ru.examples.bilimdonuz.SettingsFragment"
         tools:layout="@layout/setting_fragment"/>
+    <fragment
+        android:id="@+id/account_navigation"
+        android:name="ru.examples.bilimdonuz.ui.account.AccountFragment"
+        tools:layout="@layout/account_fragment"/>
 </navigation>

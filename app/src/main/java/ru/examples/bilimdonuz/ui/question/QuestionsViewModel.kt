@@ -24,6 +24,9 @@ class QuestionsViewModel (app:Application):AndroidViewModel(app){
     get() = _ldBooksVM
 
 
-
+    override fun onCleared() {
+        super.onCleared()
+        questionsRepo.onCansel()
+    }
 
 }

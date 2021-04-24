@@ -13,7 +13,8 @@ import ru.examples.bilimdonuz.model.BooksModel
 import ru.examples.bilimdonuz.onclick.IBooksOnClcik
 
 
-class BooksAdapters(val iBooksOnClcik: IBooksOnClcik): ListAdapter<BooksModel,BooksAdapters.BooksVH>(CallbackBooks()) {
+class BooksAdapters(val iBooksOnClcik: IBooksOnClcik):
+    ListAdapter<BooksModel,BooksAdapters.BooksVH>(CallbackBooks()) {
 
 
 

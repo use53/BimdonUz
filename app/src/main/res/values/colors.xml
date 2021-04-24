@@ -10,4 +10,7 @@
     <color name="statusbar">#FCDCD6D6</color>
     <color name="grey_100">#F2F2F2</color>
     <color name="answercolor">#C3CDD6</color>
+    <color name="splashtext">#5ABD8C</color>
+    <color name="recyclerscroll">#30C20E</color>
+    <color name="vpcolor">#00B8B9B8</color>
 </resources>
